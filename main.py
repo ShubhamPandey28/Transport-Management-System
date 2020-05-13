@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
 
 # Subclass QMainWindow to customise your application's main window
 class MainWindow(QMainWindow):
-    # Properties of the window like title goes here 
+    # Properties of the window like title goes here
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setGeometry(200, 200, 400, 300)
@@ -38,5 +38,6 @@ def main():
     win.show()
     sys.exit(app.exec_())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
