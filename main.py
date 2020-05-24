@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
     # All UI elements in Main-Window to be modified here
     def initUI(self):
         self.label = QLabel(self)
-        self.label.setText("Created by Ashwin Ginoria and Shubham Pandey!! :)")
+        self.label.setText("Your App Here!! ;)")
         # self.label.move(50, 50)
 
         # The `Qt` namespace has a lot of attributes to customise
