@@ -1,5 +1,6 @@
 '''
 This file contains all the objects and functions used as the database backend.
+Just run it once.
 '''
 
 import os
