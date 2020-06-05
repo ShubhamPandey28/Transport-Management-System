@@ -2,3 +2,5 @@ node_modules/*
 .vscode
 Project
 notes.txt
+Pipfile
+Pipfile.lock
