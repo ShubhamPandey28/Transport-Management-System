@@ -1,5 +1,5 @@
 '''
-This file contains all the objects and functions used as the database backend.
+This is mysql development env setup file.
 Just run it once.
 '''
 
