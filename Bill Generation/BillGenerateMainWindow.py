@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from AddConsignor2 import Ui_AddConsignor
 
 class Ui_BillGenerationMainWindow(object):
     def setupUi(self, BillGenerationMainWindow):
@@ -89,46 +89,57 @@ class Ui_BillGenerationMainWindow(object):
         self.snoText = QtWidgets.QTextEdit(self.groupBox)
         self.snoText.setGeometry(QtCore.QRect(650, 90, 104, 21))
         self.snoText.setObjectName("snoText")
-        
         BillGenerationMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(BillGenerationMainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
         self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
         BillGenerationMainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(BillGenerationMainWindow)
         self.statusbar.setObjectName("statusbar")
         BillGenerationMainWindow.setStatusBar(self.statusbar)
+        self.addConsignorAction = QtWidgets.QAction(BillGenerationMainWindow)
+        self.addConsignorAction.setObjectName("addConsignorAction")
+        self.menuFile.addAction(self.addConsignorAction)
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.addConsignorAction.triggered.connect(lambda : self.openAddConsignorWindow('Hello'))
 
         self.retranslateUi(BillGenerationMainWindow)
         QtCore.QMetaObject.connectSlotsByName(BillGenerationMainWindow)
 
+    
     def retranslateUi(self, BillGenerationMainWindow):
         _translate = QtCore.QCoreApplication.translate
         BillGenerationMainWindow.setWindowTitle(_translate("BillGenerationMainWindow", "MainWindow"))
         self.groupBox.setTitle(_translate("BillGenerationMainWindow", "GroupBox"))
-        
         self.fromLabel.setText(_translate("BillGenerationMainWindow", "FROM:"))
         self.destLabel.setText(_translate("BillGenerationMainWindow", "DEST:"))
         self.consignorLabel.setText(_translate("BillGenerationMainWindow", "Consignor:"))
         self.consigneeLabel.setText(_translate("BillGenerationMainWindow", "Consignee:"))
         self.snoLabel.setText(_translate("BillGenerationMainWindow", "S.No."))
-        
         self.consignorCB.setItemText(0, _translate("BillGenerationMainWindow", "Akash Enterprises"))
         self.consignorCB.setItemText(1, _translate("BillGenerationMainWindow", "Preet Company"))
-        
         self.destCB.setItemText(0, _translate("BillGenerationMainWindow", "Kota-Rajansthan"))
         self.destCB.setItemText(1, _translate("BillGenerationMainWindow", "Meerut-UP"))
         self.destCB.setItemText(2, _translate("BillGenerationMainWindow", "Jaipur-Rajasthan"))
         self.destCB.setItemText(3, _translate("BillGenerationMainWindow", "Ahmedabad-Gujarat"))
-        
         self.fromCB.setItemText(0, _translate("BillGenerationMainWindow", "Kolkata-WB"))
         self.fromCB.setItemText(1, _translate("BillGenerationMainWindow", "Meerut-UP"))
         self.fromCB.setItemText(2, _translate("BillGenerationMainWindow", "Jaipur-Rajasthan"))
         self.fromCB.setItemText(3, _translate("BillGenerationMainWindow", "Kota-Rajansthan"))
         self.fromCB.setItemText(4, _translate("BillGenerationMainWindow", "Ahmedabad-Gujarat"))
-        
         self.consigneeCB.setItemText(0, _translate("BillGenerationMainWindow", "Akash Enterprises"))
         self.consigneeCB.setItemText(1, _translate("BillGenerationMainWindow", "Preet Company"))
+        self.menuFile.setTitle(_translate("BillGenerationMainWindow", "File"))
+        self.addConsignorAction.setText(_translate("BillGenerationMainWindow", "Add Consignor/Consignee"))
+        self.addConsignorAction.setStatusTip(_translate("BillGenerationMainWindow", "Add new Consignor or consignee"))
+    def openAddConsignorWindow(self,text):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AddConsignor()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
 
 
 if __name__ == "__main__":
