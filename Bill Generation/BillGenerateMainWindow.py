@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from AddConsignor2 import Ui_AddConsignor
+from AddConsignor import Ui_AddConsignor
 
 class Ui_BillGenerationMainWindow(object):
     def setupUi(self, BillGenerationMainWindow):
@@ -135,10 +135,8 @@ class Ui_BillGenerationMainWindow(object):
         self.addConsignorAction.setText(_translate("BillGenerationMainWindow", "Add Consignor/Consignee"))
         self.addConsignorAction.setStatusTip(_translate("BillGenerationMainWindow", "Add new Consignor or consignee"))
     def openAddConsignorWindow(self,text):
-        self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AddConsignor()
-        self.ui.setupUi(self.window)
-        self.window.show()
+        self.ui.show()
 
 
 
