@@ -8,6 +8,7 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(QMainWindow, self).__init__(parent)
         self.setObjectName("MainWindow")
+        self.setWindowTitle("MainWindow")
         self.resize(600, 400)
 
         self.setupUi()
@@ -20,19 +21,22 @@ class MainWindow(QMainWindow):
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
 
+        # Setting up Tab Widget
         self.tabWidget = QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QRect(20, 10, 561, 361))
+        self.tabWidget.setGeometry(QRect(20, 10, 550, 350))
         self.tabWidget.setObjectName("tabWidget")
 
+        # Tab 1
         self.repairTab = QWidget()
         self.repairTab.setObjectName("repairTab")
-
-        HBox = QHBoxLayout(self.repairTab)
+        self.tabWidget.addTab(self.repairTab, "")
+        self.tabWidget.setTabText(0, "New Entry")
         self.repairForm = RepairTab.RepairForm(self)
 
+        HBox = QHBoxLayout(self.repairTab)
         HBox.addWidget(self.repairForm)
-        self.tabWidget.addTab(self.repairTab, "")
 
+        # Tab 2
         # self.tab_2 = QWidget()
         # self.tab_2.setObjectName("tab_2")
         # self.tabWidget.addTab(self.tab_2, "")
@@ -40,25 +44,7 @@ class MainWindow(QMainWindow):
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.setCentralWidget(self.centralwidget)
 
-        # self.statusbar = QStatusBar(self)
-        # self.statusbar.setObjectName("statusbar")
-        # selfsetStatusBar(self.statusbar)
-
-        self.retranslateUi()
         self.tabWidget.setCurrentIndex(0)
-        QMetaObject.connectSlotsByName(self)
-
-    def retranslateUi(self):
-        _translate = QCoreApplication.translate
-        self.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.repairForm.retranslateUi()
-        self.tabWidget.setTabText(
-            self.tabWidget.indexOf(self.repairTab),
-            _translate("MainWindow", "New Entry"),
-        )
-        # self.tabWidget.setTabText(
-        #     self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "View History")
-        # )
 
 
 if __name__ == "__main__":
