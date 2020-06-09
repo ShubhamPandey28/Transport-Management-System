@@ -21,3 +21,14 @@ Currently it's decided to implement the 2nd approach but instead of having just 
 2. Bill-Generation-Tool : This will automate the Entries to Job-Management.
 
 3. Maintenance-Suggester : A tool which uses Machine-Learning to suggest when a vehical should next go for maintenance using the jobs/movement and repairing/maintenance history of the vehical.
+
+# TMS-Server
+Backend system of Transport-Management-System
+
+
+## Using Server SDK
+
+first of all run the server from ```https://github.com/ShubhamPandey28/TMS-Server.git```
+ by following the guidelines
+
+You can find SDK(Software Development Kit) of this server in ```server/utils.py```
