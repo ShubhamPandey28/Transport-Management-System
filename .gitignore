@@ -1,6 +1,7 @@
-node_modules/*
+__pycache__
 .vscode
 Project
 notes.txt
 Pipfile
 Pipfile.lock
+mysql_config.json
