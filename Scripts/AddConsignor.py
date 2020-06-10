@@ -111,24 +111,22 @@ class Ui_AddConsignorDlg(QDialog):
         self.invalidPinLabel.hide()
 
             
-        self.addAsLabel = QLabel(self)
+        self.addAsLabel = QLabel("Add as:")
         self.addAsLabel.setObjectName("addAsLabel")
-        self.radioButGroupBox = QGroupBox(self)
-        self.radioButGroupBox.setObjectName('radioButGroupBox')
-        self.radioButGroupBox.setGeometry(QRect(200,200,500,500))
-        # self.consignorRadioBut = QRadioButton('Consignor ',self.radioButGroupBox)
-        # self.consignorRadioBut.setObjectName("consignorRadioBut")
+        self.horizontalLayout = QHBoxLayout()
+        consignorRadioBut = QRadioButton('Consignor ')
+        consignorRadioBut.setObjectName("consignorRadioBut")
         
-        self.consigneeRadioBut = QRadioButton('Consignee ',self.radioButGroupBox)
-        #self.consigneeRadioBut.setGeometry(QRect(200, 250, 270, 270))
-        self.consigneeRadioBut.setObjectName("consigneeRadioBut")
+        consigneeRadioBut = QRadioButton('Consignee ')
+        consigneeRadioBut.setObjectName("consigneeRadioBut")
         
-        self.bothRadioBut = QRadioButton('Both ',self.radioButGroupBox)
-        self.bothRadioBut.setGeometry(QRect(200, 250, 270, 270))
-        self.bothRadioBut.setObjectName("bothRadioBut")
-        self.addAsLabel.setBuddy(self.radioButGroupBox)
+        bothRadioBut = QRadioButton('Both ')
+        bothRadioBut.setGeometry(QRect(200, 250, 270, 270))
+        bothRadioBut.setObjectName("bothRadioBut")
         
-        
+        self.horizontalLayout.addWidget( consigneeRadioBut )
+        self.horizontalLayout.addWidget( consignorRadioBut )
+        self.horizontalLayout.addWidget( bothRadioBut )
 
         self.buttonBox = QDialogButtonBox(self.centralwidget)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Reset | QDialogButtonBox.Save | QDialogButtonBox.Cancel)
@@ -144,7 +142,7 @@ class Ui_AddConsignorDlg(QDialog):
         self.formLayout.addRow(self.gstLabel,self.gstLineEdit)
         self.formLayout.addRow(self.pinCodeLabel,self.pinCodeLineEdit)
         self.formLayout.addRow(self.mobNoLabel,self.mobNoLineEdit)
-        self.formLayout.addRow(self.addAsLabel,self.radioButGroupBox)
+        self.formLayout.addRow(self.addAsLabel,self.horizontalLayout)
 
         self.centralwidget.setLayout(self.formLayout)
         QMetaObject.connectSlotsByName(self)
