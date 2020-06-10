@@ -2,8 +2,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import RepairTab
-import BillGenerateTab
-import AddConsignor
+import AddConsignmentTab
+from AddConsignor import Ui_AddConsignorDlg
 
 
 class MainWindow(QMainWindow):
@@ -31,6 +31,8 @@ class MainWindow(QMainWindow):
         # self.actionAddConsignee.triggered.connect(AddConsignor.show_dlg())
         self.menuMenu.addAction(self.actionAddConsignee)
         self.menubar.addAction(self.menuMenu.menuAction())
+        self.actionAddConsignee.triggered.connect(lambda : self.openAddConsignorWindow())
+
 
         # Set-Up Central Widget
         self.centralwidget = QWidget(self)
@@ -54,12 +56,12 @@ class MainWindow(QMainWindow):
         HBox.addWidget(self.repairForm)
 
         # Tab 2
-        self.billGenTab = QWidget(self.tabWidget)
-        self.billGenTab.setObjectName("billGenTab")
-        self.tabWidget.addTab(self.billGenTab, "Generate Bill")
-        self.billForm = BillGenerateTab.BillGenerateForm(self)
-        HBox = QHBoxLayout(self.billGenTab)
-        HBox.addWidget(self.billForm)
+        self.addConsinmentTab = QWidget(self.tabWidget)
+        self.addConsinmentTab.setObjectName("addConsinmentTab")
+        self.tabWidget.addTab(self.addConsinmentTab, "Add Consignment")
+        self.consignmentForm = AddConsignmentTab.AddConsignmentForm(self)
+        HBox = QHBoxLayout(self.addConsinmentTab)
+        HBox.addWidget(self.consignmentForm)
 
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.setCentralWidget(self.centralwidget)
@@ -71,6 +73,9 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("Status: Ready")
 
         self.tabWidget.setCurrentIndex(0)
+    def openAddConsignorWindow(self):
+        self.ui = Ui_AddConsignorDlg()
+        self.ui.show()
 
 
 if __name__ == "__main__":

@@ -1,183 +1,185 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'AddConsignor.ui'
+
+
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 
-class AddConsignorDlg(QDialog):
-    def __init__(self, parent=None):
-        super(AddConsignorDlg, self).__init__()  # parent constructor
-        self.setObjectName("AddConsignor")
+class Ui_AddConsignorDlg(QDialog):
+    def __init__(self):
+        super(Ui_AddConsignorDlg,self).__init__()     #parent constructor
+        self.setObjectName("AddConsignorDlg")
         self.resize(800, 600)
-        self.setWindowTitle("Add Consigner")
         self.setupUi()
 
     def setupUi(self):
+        self.formLayout = QFormLayout()
+        self.formLayout.setObjectName('formLayout')
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
-        self.groupBox = QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QRect(0, 0, 631, 441))
+        self.centralwidget.setGeometry(50,50,500,500)
         font = QFont()
         font.setPointSize(12)
-        self.groupBox.setFont(font)
-        self.groupBox.setTitle("")
-        self.groupBox.setObjectName("groupBox")
-
+        
         self.stateCityModel = QStandardItemModel()
 
-        self.companyNameLabel = QLabel(self.groupBox)
-        self.companyNameLabel.setGeometry(QRect(10, 40, 121, 31))
-        font = QFont()
-        font.setPointSize(12)
+        self.companyNameLabel = QLabel('&Company Name: ',self)
         self.companyNameLabel.setFont(font)
         self.companyNameLabel.setObjectName("companyNameLabel")
-        self.cityLabel = QLabel(self.groupBox)
-        self.cityLabel.setGeometry(QRect(10, 160, 51, 16))
-        self.cityLabel.setObjectName("cityLabel")
-
-        self.lineEdit = QLineEdit(self.groupBox)
-        self.lineEdit.setGeometry(QRect(140, 40, 351, 31))
-        self.lineEdit.setObjectName("lineEdit")
-
-        self.stateLabel = QLabel(self.groupBox)
-        self.stateLabel.setGeometry(QRect(10, 106, 67, 21))
+        self.companyNameLineEdit = QLineEdit()
+        self.companyNameLineEdit.setGeometry(QRect(140, 40, 351, 31))
+        self.companyNameLineEdit.setObjectName("companyNameLineEdit")
+        self.companyNameLabel.setBuddy(self.companyNameLineEdit)
+        
+        self.stateLabel = QLabel('State: ',self)
         self.stateLabel.setObjectName("stateLabel")
-
-        self.stateComboBox = QComboBox(self.groupBox)
-        self.stateComboBox.setGeometry(QRect(100, 100, 281, 31))
+        self.stateComboBox = QComboBox(self)
         self.stateComboBox.setObjectName("stateComboBox")
         self.stateComboBox.setModel(self.stateCityModel)
+        self.stateLabel.setBuddy(self.stateComboBox)
 
-        self.cityComboBox = QComboBox(self.groupBox)
-        self.cityComboBox.setGeometry(QRect(100, 150, 281, 31))
+        self.cityLabel = QLabel('City: ',self)
+        self.cityLabel.setObjectName("cityLabel")
+        self.cityComboBox = QComboBox(self)
         self.cityComboBox.setObjectName("cityComboBox")
         self.cityComboBox.setModel(self.stateCityModel)
+        self.cityLabel.setBuddy(self.cityComboBox)
+
 
         data = {
-            "Rajasthan": ["Kota", "jaipur", "Ajmer"],
-            "Uttar Pradesh": ["Kanpur", "Agra", "Meerut"],
-            "Gujarat": ["Ahmendabad", "Gandhi Nagar", "Surat"],
-        }
-
+    'Rajasthan': ['Kota', 'jaipur', 'Ajmer'],
+    'Uttar Pradesh': ['Kanpur', 'Agra', 'Meerut'],
+    'Gujarat': ['Ahmendabad', 'Gandhi Nagar', 'Surat']
+            }
+        
         for k, v in data.items():
             state = QStandardItem(k)
             self.stateCityModel.appendRow(state)
             for value in v:
                 city = QStandardItem(value)
                 state.appendRow(city)
-        # until now both comboBoxes are showing states
+        #until now both comboBoxes are showing states
         self.stateComboBox.currentIndexChanged.connect(self.updateCityComboBox)
         self.updateCityComboBox(0)
-
-        self.addressLabel = QLabel(self.groupBox)
-        self.addressLabel.setGeometry(QRect(10, 210, 67, 21))
+        
+        self.addressLabel = QLabel('&Address',self)
         self.addressLabel.setObjectName("addressLabel")
+        self.addressLineEdit = QLineEdit(self)
+        self.addressLineEdit.setObjectName("addressLineEdit")
+        self.addressLabel.setBuddy(self.addressLineEdit)
 
-        self.AddressLineEdit = QLineEdit(self.groupBox)
-        self.AddressLineEdit.setGeometry(QRect(100, 204, 421, 31))
-        self.AddressLineEdit.setObjectName("AddressLineEdit")
-
-        self.gstLabel = QLabel(self.groupBox)
-        self.gstLabel.setGeometry(QRect(10, 320, 67, 17))
-        self.gstLabel.setObjectName("gstLabel")
-
-        self.gstLineEdit = QLineEdit(self.groupBox)
-        self.gstLineEdit.setGeometry(QRect(100, 310, 421, 31))
+        
+        self.gstLabel = QLabel('GSTINV: ',self)
+        self.gstLabel.setObjectName("&gstLabel")
+        self.gstLineEdit = QLineEdit(self)
         self.gstLineEdit.setObjectName("gstLineEdit")
+        self.gstLabel.setBuddy(self.gstLineEdit)
 
-        self.addAsLabel = QLabel(self.groupBox)
-        self.addAsLabel.setGeometry(QRect(10, 400, 67, 31))
-        self.addAsLabel.setObjectName("addAsLabel")
 
-        self.consignorRadioBut = QRadioButton(self.groupBox)
-        self.consignorRadioBut.setGeometry(QRect(80, 400, 112, 31))
-        self.consignorRadioBut.setObjectName("consignorRadioBut")
-        self.consigneeRadioBut = QRadioButton(self.groupBox)
-        self.consigneeRadioBut.setGeometry(QRect(210, 400, 112, 31))
-        self.consigneeRadioBut.setObjectName("consigneeRadioBut")
-
-        self.bothRadioBut = QRadioButton(self.groupBox)
-        self.bothRadioBut.setGeometry(QRect(350, 400, 71, 31))
-        self.bothRadioBut.setObjectName("bothRadioBut")
-
-        self.pinCodeLabel = QLabel(self.groupBox)
-        self.pinCodeLabel.setGeometry(QRect(10, 260, 67, 31))
-        self.pinCodeLabel.setObjectName("pinCodeLabel")
-        self.pinCodeLineEdit = QLineEdit(self.groupBox)
-        self.pinCodeLineEdit.setGeometry(QRect(100, 260, 113, 31))
+        self.pinCodeLabel = QLabel('&Pin Code:',self)
+        self.pinCodeLabel.setObjectName('pinCodeLabel')
+        self.pinCodeLineEdit = QLineEdit(self)
         self.pinCodeLineEdit.setObjectName("pinCodeLineEdit")
+        self.pinCodeLabel.setBuddy(self.pinCodeLineEdit)
+        self.pinCodeLineEdit.setValidator(QIntValidator())
+        self.pinCodeLineEdit.setMaxLength(6)
+        self.pinCodeLineEdit.textChanged.connect(self.checkPin)
 
-        self.mobNoLabel = QLabel(self.groupBox)
-        self.mobNoLabel.setGeometry(QRect(10, 366, 81, 21))
+        
+        self.mobNoLabel = QLabel('&Mobile No.',self)
         self.mobNoLabel.setObjectName("mobNoLabel")
-
-        self.mobNoLineEdit = QLineEdit(self.groupBox)
-        self.mobNoLineEdit.setGeometry(QRect(140, 360, 131, 31))
+        self.mobNoLineEdit = QLineEdit(self)
         self.mobNoLineEdit.setObjectName("mobNoLineEdit")
+        self.mobNoLabel.setBuddy(self.mobNoLineEdit)
+        self.mobNoLineEdit.setValidator(QIntValidator())
+        self.mobNoLineEdit.setMaxLength(10)
+        self.mobNoLineEdit.textChanged.connect(self.checkMobNo)
 
-        self.nineOneLabel = QLabel(self.groupBox)
-        self.nineOneLabel.setGeometry(QRect(100, 360, 41, 31))
-        self.nineOneLabel.setObjectName("nineOneLabel")
+        self.invalidMobNoLabel  = QLabel('*Invalid Mobile Number',self)
+        self.invalidMobNoLabel.setObjectName('invalidMobNoLabel')
+        self.invalidMobNoLabel.setGeometry(QRect(550,201,200,100))
+        self.invalidMobNoLabel.setStyleSheet("QLabel{color:red;font-size:12px;}")
+        self.invalidMobNoLabel.hide()
+        self.invalidPinLabel  = QLabel("*Invalid Pin Code",self)
+        self.invalidPinLabel.setObjectName('invalidPinLabel')
+        self.invalidPinLabel.setGeometry(QRect(550,177,200,100))
+        self.invalidPinLabel.setStyleSheet("QLabel{color:red;font-size:12px;}")
+        self.invalidPinLabel.hide()
 
-        self.SavePushButton = QPushButton(self)
-        self.SavePushButton.setGeometry(QRect(70, 500, 89, 31))
-        font = QFont()
-        font.setPointSize(14)
-        self.SavePushButton.setFont(font)
-        self.SavePushButton.setObjectName("SavePushButton")
-        self.SavePushButton.clicked.connect(self.accept)
+            
+        self.addAsLabel = QLabel(self)
+        self.addAsLabel.setObjectName("addAsLabel")
+        self.radioButGroupBox = QGroupBox(self)
+        self.radioButGroupBox.setObjectName('radioButGroupBox')
+        self.radioButGroupBox.setGeometry(QRect(200,200,500,500))
+        # self.consignorRadioBut = QRadioButton('Consignor ',self.radioButGroupBox)
+        # self.consignorRadioBut.setObjectName("consignorRadioBut")
+        
+        self.consigneeRadioBut = QRadioButton('Consignee ',self.radioButGroupBox)
+        #self.consigneeRadioBut.setGeometry(QRect(200, 250, 270, 270))
+        self.consigneeRadioBut.setObjectName("consigneeRadioBut")
+        
+        self.bothRadioBut = QRadioButton('Both ',self.radioButGroupBox)
+        self.bothRadioBut.setGeometry(QRect(200, 250, 270, 270))
+        self.bothRadioBut.setObjectName("bothRadioBut")
+        self.addAsLabel.setBuddy(self.radioButGroupBox)
+        
+        
 
-        self.cancelPushButton = QPushButton(self)
-        self.cancelPushButton.setGeometry(QRect(180, 500, 89, 31))
-        font = QFont()
-        font.setPointSize(14)
-        self.cancelPushButton.setFont(font)
-        self.cancelPushButton.setObjectName("cancelPushButton")
-        self.cancelPushButton.clicked.connect(self.reject)
+        self.buttonBox = QDialogButtonBox(self.centralwidget)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Reset | QDialogButtonBox.Save | QDialogButtonBox.Cancel)
+        self.buttonBox.setGeometry(QRect(100,250,270,120))
+        self.buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.saveClicked)
 
-        self.resetPushButton = QPushButton(self)
-        self.resetPushButton.setGeometry(QRect(290, 500, 89, 31))
-        font = QFont()
-        font.setPointSize(14)
-        self.resetPushButton.setFont(font)
-        self.resetPushButton.setObjectName("resetPushButton")
+        
+        
+        self.formLayout.addRow(self.companyNameLabel,self.companyNameLineEdit)
+        self.formLayout.addRow(self.stateLabel,self.stateComboBox)
+        self.formLayout.addRow(self.cityLabel,self.cityComboBox)
+        self.formLayout.addRow(self.addressLabel,self.addressLineEdit)
+        self.formLayout.addRow(self.gstLabel,self.gstLineEdit)
+        self.formLayout.addRow(self.pinCodeLabel,self.pinCodeLineEdit)
+        self.formLayout.addRow(self.mobNoLabel,self.mobNoLineEdit)
+        self.formLayout.addRow(self.addAsLabel,self.radioButGroupBox)
 
-        self.retranslateUi(self)
+        self.centralwidget.setLayout(self.formLayout)
         QMetaObject.connectSlotsByName(self)
 
-    def updateCityComboBox(self, index):
-        # index(int row, int column, const QModelIndex &parent = QModelIndex()) const override
-        indx = self.stateCityModel.index(index, 0, self.stateComboBox.rootModelIndex())
+    def updateCityComboBox(self,index):
+        #index(int row, int column, const QModelIndex &parent = QModelIndex()) const override
+        indx = self.stateCityModel.index(index, 0, self.stateComboBox.rootModelIndex())   
         self.cityComboBox.setRootModelIndex(indx)
         self.cityComboBox.setCurrentIndex(0)
+    def saveClicked(self):
+        print(self.mobNoLineEdit.text())
+        print('YES')
+    def checkMobNo(self):
+        if len(self.mobNoLineEdit.text())<10:
+            self.invalidMobNoLabel.show()
+            self.mobNoLineEdit.setStyleSheet("border:1px solid red")
 
-    def retranslateUi(self, AddConsignor):
-        _translate = QCoreApplication.translate
-        # self.setWindowTitle(_translate("AddConsignor", "MainWindow"))
-        self.companyNameLabel.setText(_translate("AddConsignor", "Company Name:"))
-        self.cityLabel.setText(_translate("AddConsignor", "City:"))
-        self.stateLabel.setText(_translate("AddConsignor", "State:"))
-        self.addressLabel.setText(_translate("AddConsignor", "Address:"))
-        self.gstLabel.setText(_translate("AddConsignor", "GSTIN:"))
-        self.addAsLabel.setText(_translate("AddConsignor", "Add as:"))
-        self.consignorRadioBut.setText(_translate("AddConsignor", "Consignor"))
-        # self.menuMenu.setObjectName("menuMenu").setText(_translate("AddConsignor", "Consignee"))
-        self.bothRadioBut.setText(_translate("AddConsignor", "Both"))
-        self.pinCodeLabel.setText(_translate("AddConsignor", "Pin Code:"))
-        self.mobNoLabel.setText(_translate("AddConsignor", "Mobile No."))
-        self.nineOneLabel.setText(_translate("AddConsignor", "+91-"))
-        self.SavePushButton.setText(_translate("AddConsignor", "Save"))
-        self.cancelPushButton.setText(_translate("AddConsignor", "Cancel"))
-        self.resetPushButton.setText(_translate("AddConsignor", "Reset"))
+        else:
+            self.invalidMobNoLabel.hide()
+            self.mobNoLineEdit.setStyleSheet("border:")
+
+    def checkPin(self):
+        if len(self.pinCodeLineEdit.text())<6:
+            self.invalidPinLabel.show()
+            self.pinCodeLineEdit.setStyleSheet("border:1px solid red")
+        else:
+            self.invalidPinLabel.hide()
+            self.pinCodeLineEdit.setStyleSheet("border:")
 
 
-def show_dlg():
-    newdlg = AddConsignorDlg()
-    newdlg.exec_()
 
 
 if __name__ == "__main__":
     import sys
-
     app = QApplication(sys.argv)
-    show_dlg()
+    ui = Ui_AddConsignorDlg()
+    ui.show()
     sys.exit(app.exec_())

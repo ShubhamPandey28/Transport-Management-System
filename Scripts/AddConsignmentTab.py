@@ -3,9 +3,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 
-class BillGenerateForm(QGroupBox):
+class AddConsignmentForm(QGroupBox):
     def __init__(self, parent=None):
-        super(BillGenerateForm, self).__init__(parent)
+        super(AddConsignmentForm, self).__init__(parent)
 
         self.setObjectName("BillGenerationMainWindow")
         self.setMaximumSize(QSize(400, 300))
@@ -110,6 +110,6 @@ if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
-    ui = BillGenerateForm()
+    ui = AddConsignmentForm()
     ui.show()
     sys.exit(app.exec_())
