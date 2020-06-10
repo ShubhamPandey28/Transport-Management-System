@@ -31,8 +31,7 @@ class MainWindow(QMainWindow):
         # self.actionAddConsignee.triggered.connect(AddConsignor.show_dlg())
         self.menuMenu.addAction(self.actionAddConsignee)
         self.menubar.addAction(self.menuMenu.menuAction())
-        self.actionAddConsignee.triggered.connect(lambda : self.openAddConsignorWindow())
-
+        self.actionAddConsignee.triggered.connect(lambda: self.openAddConsignorWindow())
 
         # Set-Up Central Widget
         self.centralwidget = QWidget(self)
@@ -73,6 +72,7 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("Status: Ready")
 
         self.tabWidget.setCurrentIndex(0)
+
     def openAddConsignorWindow(self):
         self.ui = Ui_AddConsignorDlg()
         self.ui.show()
