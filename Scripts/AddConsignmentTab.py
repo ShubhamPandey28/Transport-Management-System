@@ -154,7 +154,6 @@ class AddConsignmentForm(QGroupBox):
         self.qvLayout.addLayout(self.addItemGrid)
         self.qvLayout.addWidget(self.itemsTable)
 
-        #self.itemsTable.appendRow(['hhhhhhh','45','3','jfkbisdjnsuzjkbf fmbf gn kjgmb k'])
 
         self.setLayout(self.qvLayout)
         QMetaObject.connectSlotsByName(self)
