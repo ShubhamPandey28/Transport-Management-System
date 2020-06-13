@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QAction, QTableWidget,QTableWidgetItem,QVBoxLayout
+from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 import sys
@@ -13,6 +13,10 @@ class itemsTableView(QTableWidget):
         self.setEditTriggers(QTableWidget.NoEditTriggers)
         self.headings = headings
         self.setHorizontalHeaderLabels(self.headings)
+        
+        for i in range(len(headings)):
+            self.horizontalHeader().setSectionResizeMode(i, QHeaderView.Stretch)
+        
         self.resizeColumnsToContents()
         self.resizeRowsToContents()
 
