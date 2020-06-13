@@ -12,6 +12,7 @@ class AddConsignorDlg(QDialog):
     def __init__(self):
         super(AddConsignorDlg, self).__init__()  # parent constructor
         self.setObjectName("AddConsignorDlg")
+
         self.resize(500, 400)
         self.setMinimumSize(QSize(500, 400))
         self.setMaximumSize(QSize(500, 400))
