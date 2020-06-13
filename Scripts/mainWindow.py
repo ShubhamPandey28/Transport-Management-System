@@ -3,14 +3,14 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import RepairTab
 import AddConsignmentTab
-from AddConsignor import Ui_AddConsignorDlg
+from AddConsignor import AddConsignorDlg
 
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(QMainWindow, self).__init__(parent)
         self.setObjectName("MainWindow")
-        self.setWindowTitle("MainWindow")
+        self.setWindowTitle("SG Transport")
         self.resize(600, 400)
 
         self.setupUi()
@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
         self.tabWidget.setCurrentIndex(0)
 
     def openAddConsignorWindow(self):
-        self.ui = Ui_AddConsignorDlg()
+        self.ui = AddConsignorDlg()
         self.ui.show()
 
 
