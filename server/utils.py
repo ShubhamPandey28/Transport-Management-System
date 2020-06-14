@@ -8,13 +8,8 @@ import requests
 url = 'http://127.0.0.1:5000/'
 
 def to_json(table_datas):
-
-    res = []
-
-    for table_data in table_datas:
-        res.append(json.dumps(table_data))
-
-    return res
+    
+    return list(map(json.dumps, table_datas))
 
 
 def insert(table_datas):
