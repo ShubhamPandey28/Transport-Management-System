@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 import RepairTab
 import AddConsignmentTab
 from AddConsignor import Ui_AddConsignorDlg
+from AddVehicle import AddVehicleform
 
 
 class MainWindow(QMainWindow):
@@ -30,8 +31,14 @@ class MainWindow(QMainWindow):
         # self.actionAddConsignee.statusTip("Add a new Consigner/Consignee")
         # self.actionAddConsignee.triggered.connect(AddConsignor.show_dlg())
         self.menuMenu.addAction(self.actionAddConsignee)
+
+        self.actionAddVehicle = QAction("Add Vehicle",self)
+        self.actionAddConsignee.setObjectName("actionAddVehicle")
+        self.menuMenu.addAction(self.actionAddVehicle)
+
         self.menubar.addAction(self.menuMenu.menuAction())
         self.actionAddConsignee.triggered.connect(lambda : self.openAddConsignorWindow())
+        self.actionAddVehicle.triggered.connect(lambda : self.openAddVehicleWindow())
 
 
         # Set-Up Central Widget
@@ -73,8 +80,13 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("Status: Ready")
 
         self.tabWidget.setCurrentIndex(0)
+    
     def openAddConsignorWindow(self):
         self.ui = Ui_AddConsignorDlg()
+        self.ui.show()
+
+    def openAddVehicleWindow(self):
+        self.ui = AddVehicleform()
         self.ui.show()
 
 
