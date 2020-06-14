@@ -7,11 +7,10 @@ class RepairForm(QGroupBox):
     def __init__(self, parent=None):
         super(QWidget, self).__init__(parent)
 
-        self.setObjectName("Form")
         self.setMinimumSize(QSize(400, 250))
         self.setMaximumSize(QSize(400, 250))
         self.setObjectName("groupBox")
-        self.setWindowTitle("Form")
+        self.setWindowTitle("Repair Form")
 
         self.setupUi()
 

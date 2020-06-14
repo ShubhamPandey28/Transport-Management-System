@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 import RepairTab
 import AddConsignmentTab
 from AddConsignor import AddConsignorDlg
+import BillGenerateTab
 
 
 class MainWindow(QMainWindow):
@@ -61,6 +62,14 @@ class MainWindow(QMainWindow):
         self.consignmentForm = AddConsignmentTab.AddConsignmentForm(self)
         HBox = QHBoxLayout(self.addConsinmentTab)
         HBox.addWidget(self.consignmentForm)
+
+        # Tab 3
+        self.billGenTab = QWidget(self.tabWidget)
+        self.billGenTab.setObjectName("billGenTab")
+        self.tabWidget.addTab(self.billGenTab, "Generate Bill")
+        self.billForm = BillGenerateTab.BillForm(self)
+        HBox = QHBoxLayout(self.billGenTab)
+        HBox.addWidget(self.billForm)
 
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.setCentralWidget(self.centralwidget)
