@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest black
+        pip install flake8 pytest
         pip install -r requirements.txt
     - name: Lint with flake8
       run: |
@@ -47,5 +47,9 @@ jobs:
   Formatting:
     runs-on: ubuntu-latest
     steps:
+    - name: Install black
+      run: /
+        python -m pip install --upgrade pip
+        pip install black
     - name: Check Formatting with black
       run: black --check Scripts/*.py
