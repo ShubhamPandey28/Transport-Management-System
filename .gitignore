@@ -5,3 +5,4 @@ notes.txt
 Pipfile
 Pipfile.lock
 mysql_config.json
+test.py
