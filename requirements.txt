@@ -1,1 +1,3 @@
 PyQt5==5.14.2
+reportlab==3.5.34
+pypdf-1.13

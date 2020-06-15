@@ -6,3 +6,5 @@ Pipfile
 Pipfile.lock
 mysql_config.json
 test.py
+Scripts/__pycache__
+bill.pdf
