@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from itemsTableView import itemsTableView
+
+from .itemsTableView import itemsTableView
 
 
 class AddConsignmentForm(QGroupBox):
@@ -157,6 +158,7 @@ class AddConsignmentForm(QGroupBox):
 
         self.setLayout(self.qvLayout)
         QMetaObject.connectSlotsByName(self)
+    
     def addItemclicked(self):
         a = self.itemDescriptionLineEdit.text()
         b = self.packingLineEdit.text()
@@ -168,10 +170,4 @@ class AddConsignmentForm(QGroupBox):
         self.packingLineEdit.clear()
         self.weightLineEdit.clear()
     
-if __name__ == "__main__":
-    import sys
 
-    app = QApplication(sys.argv)
-    ui = AddConsignmentForm()
-    ui.show()
-    sys.exit(app.exec_())

@@ -1,9 +1,10 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import RepairTab
-import AddConsignmentTab
-from AddConsignor import AddConsignorDlg
+
+from .RepairTab import RepairForm
+from .AddConsignmentTab import AddConsignmentForm
+from .AddConsignor import AddConsignorDlg
 
 
 class MainWindow(QMainWindow):
@@ -50,7 +51,7 @@ class MainWindow(QMainWindow):
         self.repairTab = QWidget(self.tabWidget)
         self.repairTab.setObjectName("repairTab")
         self.tabWidget.addTab(self.repairTab, "New Entry")
-        self.repairForm = RepairTab.RepairForm(self)
+        self.repairForm = RepairForm(self)
         HBox = QHBoxLayout(self.repairTab)
         HBox.addWidget(self.repairForm)
 
@@ -58,7 +59,7 @@ class MainWindow(QMainWindow):
         self.addConsinmentTab = QWidget(self.tabWidget)
         self.addConsinmentTab.setObjectName("addConsinmentTab")
         self.tabWidget.addTab(self.addConsinmentTab, "Add Consignment")
-        self.consignmentForm = AddConsignmentTab.AddConsignmentForm(self)
+        self.consignmentForm = AddConsignmentForm(self)
         HBox = QHBoxLayout(self.addConsinmentTab)
         HBox.addWidget(self.consignmentForm)
 
@@ -78,10 +79,3 @@ class MainWindow(QMainWindow):
         self.ui.show()
 
 
-if __name__ == "__main__":
-    import sys
-
-    app = QApplication(sys.argv)
-    ui = MainWindow()
-    ui.show()
-    sys.exit(app.exec_())

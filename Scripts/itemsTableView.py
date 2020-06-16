@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
+
 import sys
 
 data = {'col1':['1','2','3','4'],
@@ -36,5 +37,3 @@ def main(args):
     table.show()
     sys.exit(app.exec_())
  
-if __name__=="__main__":
-    main(sys.argv)
