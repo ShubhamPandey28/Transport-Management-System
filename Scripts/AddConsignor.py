@@ -181,13 +181,3 @@ class AddConsignorDlg(QDialog):
             self.invalidPinLabel.hide()
             self.pinCodeLineEdit.setStyleSheet("border:")
 
-
-if __name__ == "__main__":
-    import sys
-
-    app = QApplication(sys.argv)
-    ui = AddConsignorDlg()
-    if ui.exec_() == True:
-        print("YO")
-
-    sys.exit(app.exec_())
