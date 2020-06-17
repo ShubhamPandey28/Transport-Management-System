@@ -77,7 +77,7 @@ class AddVehicleform(QDialog):
         for i in veh_no[2:4]+veh_no[6:]:
             is_no&=( 47<ord(i) and ord(i)<58 )
 
-        if ( (len(veh_no) is not 10) or (is_string is 0) ) or (is_no is 0) :
+        if ( (len(veh_no) != 10) or (is_string == 0) ) or (is_no == 0) :
             self.invalidVehicleNumLabel.show()
             self.vehicleNumLineEdit.setStyleSheet("border:1px solid red")
         else :
