@@ -26,6 +26,7 @@ class AddVehicleform(QDialog):
         self.vehicleNumLineEdit = QLineEdit()
         self.vehicleNumLineEdit.setGeometry(QRect(140, 40, 351, 31))
         self.vehicleNumLineEdit.setObjectName("vehicleNumLineEdit")
+        self.vehicleNumLineEdit.setPlaceholderText("Example: MH12DE1433")
         self.vehicleNumLabel.setBuddy(self.vehicleNumLineEdit)
         self.vehicleNumLineEdit.textChanged.connect(self.checkVehicleNo)
 
