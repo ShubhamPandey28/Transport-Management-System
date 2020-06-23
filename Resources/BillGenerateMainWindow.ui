@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BillGenerationMainWindow</class>
+ <widget class="QMainWindow" name="BillGenerationMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>771</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>GroupBox</string>
+    </property>
+    <widget class="QLabel" name="fromLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>67</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>FROM:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="destLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>DEST:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="consignorLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>81</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Consignor:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="consigneeLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>160</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Consignee:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="snoLabel">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>90</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ubuntu</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>S.No.</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>40</y>
+       <width>110</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="consignorCB">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>120</y>
+       <width>341</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Akash Enterprises</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Preet Company</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="destCB">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>79</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Kota-Rajansthan</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Meerut-UP</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jaipur-Rajasthan</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ahmedabad-Gujarat</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="fromCB">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>40</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Kolkata-WB</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Meerut-UP</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jaipur-Rajasthan</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kota-Rajansthan</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ahmedabad-Gujarat</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="consigneeCB">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>160</y>
+       <width>341</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Akash Enterprises</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Preet Company</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QTextEdit" name="snoText">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>90</y>
+       <width>104</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionAdd_Consignor"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAdd_Consignor">
+   <property name="text">
+    <string>Add Consignor/Consignee</string>
+   </property>
+   <property name="statusTip">
+    <string>Add new Consignor or consignee</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

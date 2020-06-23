@@ -1,5 +1,8 @@
-node_modules/*
 .vscode
 Project
 notes.txt
+__pycache__
+Pipfile
+Pipfile.lock
+test.py
 Scripts/__pycache__/*

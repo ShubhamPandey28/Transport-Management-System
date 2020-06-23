@@ -1,19 +1,40 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import RepairTab
+
+from .RepairTab import RepairForm
+from .AddConsignmentTab import AddConsignmentForm
+from .AddConsignor import AddConsignorDlg
 
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(QMainWindow, self).__init__(parent)
         self.setObjectName("MainWindow")
-        self.setWindowTitle("MainWindow")
+        self.setWindowTitle("SG Transport")
         self.resize(600, 400)
 
         self.setupUi()
 
     def setupUi(self):
+
+        # Set-Up Menu Bar
+        self.menubar = QMenuBar(self)
+        self.menubar.setObjectName("menubar")
+        self.menuMenu = QMenu(self.menubar, title="Menu")
+        self.menuMenu.setObjectName("menuMenu")
+        self.setMenuBar(self.menubar)
+
+        # Add Consignee Menu option
+        self.actionAddConsignee = QAction("Add Consignee", self)
+        self.actionAddConsignee.setObjectName("actionAddConsignee")
+        # self.actionAddConsignee.statusTip("Add a new Consigner/Consignee")
+        # self.actionAddConsignee.triggered.connect(AddConsignor.show_dlg())
+        self.menuMenu.addAction(self.actionAddConsignee)
+        self.menubar.addAction(self.menuMenu.menuAction())
+        self.actionAddConsignee.triggered.connect(lambda: self.openAddConsignorWindow())
+
+        # Set-Up Central Widget
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -27,25 +48,35 @@ class MainWindow(QMainWindow):
         self.tabWidget.setObjectName("tabWidget")
 
         # Tab 1
-        self.repairTab = QWidget()
+        self.repairTab = QWidget(self.tabWidget)
         self.repairTab.setObjectName("repairTab")
-        self.tabWidget.addTab(self.repairTab, "")
-        self.tabWidget.setTabText(0, "New Entry")
-        self.repairForm = RepairTab.RepairForm(self)
-
+        self.tabWidget.addTab(self.repairTab, "New Entry")
+        self.repairForm = RepairForm(self)
         HBox = QHBoxLayout(self.repairTab)
         HBox.addWidget(self.repairForm)
 
         # Tab 2
-        # self.tab_2 = QWidget()
-        # self.tab_2.setObjectName("tab_2")
-        # self.tabWidget.addTab(self.tab_2, "")
+        self.addConsinmentTab = QWidget(self.tabWidget)
+        self.addConsinmentTab.setObjectName("addConsinmentTab")
+        self.tabWidget.addTab(self.addConsinmentTab, "Add Consignment")
+        self.consignmentForm = AddConsignmentForm(self)
+        HBox = QHBoxLayout(self.addConsinmentTab)
+        HBox.addWidget(self.consignmentForm)
 
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.setCentralWidget(self.centralwidget)
 
+        # Set-up StatusBar
+        # self.statusbar = QtWidgets.QStatusBar(self)
+        # self.statusbar.setObjectName("statusbar")
+        # self.setStatusBar(self.statusbar)
+        self.statusBar().showMessage("Status: Ready")
+
         self.tabWidget.setCurrentIndex(0)
 
+    def openAddConsignorWindow(self):
+        self.ui = AddConsignorDlg()
+        self.ui.show()
 
 if __name__ == "__main__":
     import sys
