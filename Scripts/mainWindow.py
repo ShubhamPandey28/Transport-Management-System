@@ -78,6 +78,7 @@ class MainWindow(QMainWindow):
         self.ui = AddConsignorDlg()
         self.ui.show()
 
+
 if __name__ == "__main__":
     import sys
 

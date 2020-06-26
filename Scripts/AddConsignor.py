@@ -148,7 +148,13 @@ class AddConsignorDlg(QDialog):
 
         data["Name"] = self.companyNameLineEdit.text()
         data["Contact"] = self.mobNoLineEdit.text()
-        data["Address"] = self.addressLineEdit.text() + ", " + self.cityComboBox.currentText() + " - " + self.pinCodeLineEdit.text()
+        data["Address"] = (
+            self.addressLineEdit.text()
+            + ", "
+            + self.cityComboBox.currentText()
+            + " - "
+            + self.pinCodeLineEdit.text()
+        )
         data["Email"] = self.emailLineEdit.text()
         data["GST_Number"] = self.gstLineEdit.text()
 
@@ -172,4 +178,3 @@ class AddConsignorDlg(QDialog):
         else:
             self.invalidPinLabel.hide()
             self.pinCodeLineEdit.setStyleSheet("border:")
-
