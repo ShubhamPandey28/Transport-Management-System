@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'AddConsignor.ui'
-
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -100,6 +95,12 @@ class AddConsignorDlg(QDialog):
         self.mobNoLineEdit.setMaxLength(10)
         self.mobNoLineEdit.textChanged.connect(self.checkMobNo)
 
+        self.emailLabel = QLabel("&Email :", self)
+        self.emailLabel.setObjectName("emailLabel")
+        self.emailLineEdit = QLineEdit(self)
+        self.emailLineEdit.setObjectName("emailLineEdit")
+        self.emailLabel.setBuddy(self.pinCodeLineEdit)
+
         self.invalidMobNoLabel = QLabel("*Invalid Mobile Number", self)
         self.invalidMobNoLabel.setObjectName("invalidMobNoLabel")
         # self.invalidMobNoLabel.setGeometry(QRect(550, 201, 200, 100))
@@ -110,23 +111,6 @@ class AddConsignorDlg(QDialog):
         # self.invalidPinLabel.setGeometry(QRect(550, 177, 200, 100))
         self.invalidPinLabel.setStyleSheet("QLabel{color:red;font-size:12px;}")
         self.invalidPinLabel.hide()
-
-        self.addAsLabel = QLabel("Add as:")
-        self.addAsLabel.setObjectName("addAsLabel")
-        self.radioLayout = QHBoxLayout()
-        consignorRadioBut = QRadioButton("Consignor ")
-        consignorRadioBut.setObjectName("consignorRadioBut")
-
-        consigneeRadioBut = QRadioButton("Consignee ")
-        consigneeRadioBut.setObjectName("consigneeRadioBut")
-
-        bothRadioBut = QRadioButton("Both ")
-        bothRadioBut.setGeometry(QRect(200, 250, 270, 270))
-        bothRadioBut.setObjectName("bothRadioBut")
-
-        self.radioLayout.addWidget(consigneeRadioBut)
-        self.radioLayout.addWidget(consignorRadioBut)
-        self.radioLayout.addWidget(bothRadioBut)
 
         self.buttonBox = QDialogButtonBox(self.centralwidget)
         self.buttonBox.setStandardButtons(
@@ -145,7 +129,7 @@ class AddConsignorDlg(QDialog):
         self.formLayout.addRow(self.invalidPinLabel)
         self.formLayout.addRow(self.mobNoLabel, self.mobNoLineEdit)
         self.formLayout.addRow(self.invalidMobNoLabel)
-        self.formLayout.addRow(self.addAsLabel, self.radioLayout)
+        self.formLayout.addRow(self.emailLabel, self.emailLineEdit)
 
         self.verticalLayout.addLayout(self.formLayout)
         self.verticalLayout.addWidget(self.buttonBox)
@@ -160,8 +144,16 @@ class AddConsignorDlg(QDialog):
         self.cityComboBox.setCurrentIndex(0)
 
     def saveClicked(self):
-        print(self.mobNoLineEdit.text())
-        print("YES")
+        data = {}
+
+        data["Name"] = self.companyNameLineEdit.text()
+        data["Contact"] = self.mobNoLineEdit.text()
+        data["Address"] = self.addressLineEdit.text() + ", " + self.cityComboBox.currentText() + " - " + self.pinCodeLineEdit.text()
+        data["Email"] = self.emailLineEdit.text()
+        data["GST_Number"] = self.gstLineEdit.text()
+
+        print(data)
+
         self.accept()
 
     def checkMobNo(self):
