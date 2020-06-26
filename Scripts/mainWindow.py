@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import *
 from .RepairTab import RepairForm
 from .AddConsignmentTab import AddConsignmentForm
 from .AddConsignor import AddConsignorDlg
+from .BillGenerateTab import BillForm
 
 
 class MainWindow(QMainWindow):
@@ -65,6 +66,14 @@ class MainWindow(QMainWindow):
 
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.setCentralWidget(self.centralwidget)
+
+        # Tab 3
+        self.billGenTab = QWidget(self.tabWidget)
+        self.billGenTab.setObjectName("billGenTab")
+        self.tabWidget.addTab(self.billGenTab, "Generate Bill")
+        self.billForm = BillForm(self)
+        HBox = QHBoxLayout(self.billGenTab)
+        HBox.addWidget(self.billForm)
 
         # Set-up StatusBar
         # self.statusbar = QtWidgets.QStatusBar(self)
