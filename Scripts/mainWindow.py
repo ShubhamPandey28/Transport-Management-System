@@ -41,7 +41,6 @@ class MainWindow(QMainWindow):
         self.actionAddConsignee.triggered.connect(lambda : self.openAddConsignorWindow())
         self.actionAddVehicle.triggered.connect(lambda : self.openAddVehicleWindow())
 
-
         # Set-Up Central Widget
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
@@ -91,3 +90,10 @@ class MainWindow(QMainWindow):
         self.ui.show()
 
 
+if __name__ == "__main__":
+    import sys
+
+    app = QApplication(sys.argv)
+    ui = MainWindow()
+    ui.show()
+    sys.exit(app.exec_())
