@@ -30,22 +30,26 @@ class MainWindow(QMainWindow):
         # Add Consignee Menu option
         self.actionAddConsignee = QAction("Add Consignee", self)
         self.menuMenu.addAction(self.actionAddConsignee)
-        self.actionAddConsignee.triggered.connect(lambda : self.openAddConsignorWindow())
+        self.actionAddConsignee.triggered.connect(lambda: self.openAddConsignorWindow())
 
-        self.actionAddVehicle = QAction("Add Vehicle",self)
+        self.actionAddVehicle = QAction("Add Vehicle", self)
         self.menuMenu.addAction(self.actionAddVehicle)
-        self.actionAddVehicle.triggered.connect(lambda : self.openAddVehicleWindow())
+        self.actionAddVehicle.triggered.connect(lambda: self.openAddVehicleWindow())
 
         self.menubar.addAction(self.menuMenu.menuAction())
 
         # Creating Debug Menu Options
         self.actionViewConsignments = QAction("View Consignments", self)
         self.debugMenu.addAction(self.actionViewConsignments)
-        self.actionViewConsignments.triggered.connect(lambda: self.viewTable("Consignment"))
+        self.actionViewConsignments.triggered.connect(
+            lambda: self.viewTable("Consignment")
+        )
 
         self.actionViewClients = QAction("View Cliets", self)
         self.debugMenu.addAction(self.actionViewClients)
-        self.actionViewClients.triggered.connect(lambda: self.viewTable("Consignor_Consignee"))
+        self.actionViewClients.triggered.connect(
+            lambda: self.viewTable("Consignor_Consignee")
+        )
 
         self.actionViewVehicles = QAction("View Vehicles", self)
         self.debugMenu.addAction(self.actionViewVehicles)

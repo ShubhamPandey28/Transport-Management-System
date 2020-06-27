@@ -22,14 +22,14 @@ class debugView(QDialog):
         self.centralwidget.setObjectName("centralwidget")
 
         newLayout = QHBoxLayout(self)
-        data = get_table(self.table_name)['result']
+        data = get_table(self.table_name)["result"]
 
         tmp = {
-            'Vehicle' : list(Vehicle_Dict().keys()),
-            'Consignor_Consignee' : list(Consignor_Consignee_Dict().keys()),
-            'Consignment' : list(Consignment_Dict().keys()),
-            'Repair_Log' : list(Repair_Log_Dict().keys()),
-            'Bills' : list(Bills_Dict().keys()),
+            "Vehicle": list(Vehicle_Dict().keys()),
+            "Consignor_Consignee": list(Consignor_Consignee_Dict().keys()),
+            "Consignment": list(Consignment_Dict().keys()),
+            "Repair_Log": list(Repair_Log_Dict().keys()),
+            "Bills": list(Bills_Dict().keys()),
         }
 
         headings = tmp[self.table_name]
@@ -37,10 +37,9 @@ class debugView(QDialog):
         table = itemsTableView(headings, 0, len(headings))
         for row in data:
             table.appendRow(row)
-    
+
         table.resizeColumnsToContents()
 
         newLayout.addWidget(table)
 
         self.setLayout(newLayout)
-
