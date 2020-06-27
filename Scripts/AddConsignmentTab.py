@@ -29,17 +29,17 @@ class AddConsignmentForm(QGroupBox):
         self.setFont(font)
 
         self.qvLayout = QVBoxLayout()
-        self.qvLayout.setObjectName('qvLayout')
+        self.qvLayout.setObjectName("qvLayout")
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
         # self.gridLayout.setColumnStretch(2,1)
         # self.gridLayout.setColumnStretch(3,1)
-        
+
         self.addItemGrid = QGridLayout()
-        self.addItemGrid.setObjectName('addItemGrid')
-        headings = ['Description','Packing','Packages','Weight']
-        self.itemsTable = itemsTableView(headings,0,len(headings))
+        self.addItemGrid.setObjectName("addItemGrid")
+        headings = ["Description", "Packing", "Packages", "Weight"]
+        self.itemsTable = itemsTableView(headings, 0, len(headings))
 
         self.fromLabel = QLabel("&From", self)
         self.fromLabel.setFont(font)
@@ -98,76 +98,73 @@ class AddConsignmentForm(QGroupBox):
         self.dateEdit.setObjectName("dateEdit")
         self.dateLabel.setBuddy(self.dateEdit)
 
-        self.itemDescriptionLabel = QLabel('Item Descrition',self)
-        self.itemDescriptionLabel.setObjectName('itemDescriptionLabel')
-        
-        self.itemDescriptionLineEdit = QLineEdit(self)
-        self.itemDescriptionLineEdit.setObjectName('itemDescriptionLineEdit')
+        self.itemDescriptionLabel = QLabel("Item Descrition", self)
+        self.itemDescriptionLabel.setObjectName("itemDescriptionLabel")
 
-        self.packingLabel = QLabel('Packing',self)
-        self.packingLabel.setObjectName('packingLabel')
+        self.itemDescriptionLineEdit = QLineEdit(self)
+        self.itemDescriptionLineEdit.setObjectName("itemDescriptionLineEdit")
+
+        self.packingLabel = QLabel("Packing", self)
+        self.packingLabel.setObjectName("packingLabel")
 
         self.packingLineEdit = QLineEdit(self)
-        self.packingLineEdit.setObjectName('packingLineEdit')
+        self.packingLineEdit.setObjectName("packingLineEdit")
         self.packingLineEdit.setValidator(QIntValidator())
 
-        self.packagesLabel = QLabel('Packages',self)
-        self.packagesLabel.setObjectName('packagesLabel')
+        self.packagesLabel = QLabel("Packages", self)
+        self.packagesLabel.setObjectName("packagesLabel")
 
         self.packagesLineEdit = QLineEdit(self)
-        self.packagesLineEdit.setObjectName('packagesLineEdit')
+        self.packagesLineEdit.setObjectName("packagesLineEdit")
         self.packagesLineEdit.setValidator(QIntValidator())
 
-        self.weightLabel = QLabel('Weight',self)
-        self.weightLabel.setObjectName('weightLabel')
+        self.weightLabel = QLabel("Weight", self)
+        self.weightLabel.setObjectName("weightLabel")
 
         self.weightLineEdit = QLineEdit(self)
-        self.weightLineEdit.setObjectName('weightLineEdit')
+        self.weightLineEdit.setObjectName("weightLineEdit")
         self.weightLineEdit.setValidator(QIntValidator())
 
-        self.addItemPushBut = QPushButton('Add Item',self)
-        self.addItemPushBut.clicked.connect(lambda : self.addItemclicked())
+        self.addItemPushBut = QPushButton("Add Item", self)
+        self.addItemPushBut.clicked.connect(lambda: self.addItemclicked())
 
-        self.gridLayout.addWidget(self.fromLabel,0,0)
-        self.gridLayout.addWidget(self.fromCB,0,1)
-        self.gridLayout.addWidget(self.dateLabel,0,2)
-        self.gridLayout.addWidget(self.dateEdit,0,3)
-        self.gridLayout.addWidget(self.destLabel,1,0)
-        self.gridLayout.addWidget(self.destCB,1,1)
-        self.gridLayout.addWidget(self.snoLabel,1,2)
-        self.gridLayout.addWidget(self.snoText,1,3)
-        self.gridLayout.addWidget(self.consignorLabel,2,0)
-        self.gridLayout.addWidget(self.consignorCB,2,1)
-        self.gridLayout.addWidget(self.consigneeLabel,3,0)
-        self.gridLayout.addWidget(self.consigneeCB,3,1)
-        
-        self.addItemGrid.addWidget(self.itemDescriptionLabel,0,0)
-        self.addItemGrid.addWidget(self.itemDescriptionLineEdit,0,1)
-        self.addItemGrid.addWidget(self.packingLabel,0,2)
-        self.addItemGrid.addWidget(self.packingLineEdit,0,3)
-        self.addItemGrid.addWidget(self.weightLabel,0,4)
-        self.addItemGrid.addWidget(self.weightLineEdit,0,5)
-        self.addItemGrid.addWidget(self.packagesLabel,1,2)
-        self.addItemGrid.addWidget(self.packagesLineEdit,1,3)
-        self.addItemGrid.addWidget(self.addItemPushBut,1,5)
-        
+        self.gridLayout.addWidget(self.fromLabel, 0, 0)
+        self.gridLayout.addWidget(self.fromCB, 0, 1)
+        self.gridLayout.addWidget(self.dateLabel, 0, 2)
+        self.gridLayout.addWidget(self.dateEdit, 0, 3)
+        self.gridLayout.addWidget(self.destLabel, 1, 0)
+        self.gridLayout.addWidget(self.destCB, 1, 1)
+        self.gridLayout.addWidget(self.snoLabel, 1, 2)
+        self.gridLayout.addWidget(self.snoText, 1, 3)
+        self.gridLayout.addWidget(self.consignorLabel, 2, 0)
+        self.gridLayout.addWidget(self.consignorCB, 2, 1)
+        self.gridLayout.addWidget(self.consigneeLabel, 3, 0)
+        self.gridLayout.addWidget(self.consigneeCB, 3, 1)
+
+        self.addItemGrid.addWidget(self.itemDescriptionLabel, 0, 0)
+        self.addItemGrid.addWidget(self.itemDescriptionLineEdit, 0, 1)
+        self.addItemGrid.addWidget(self.packingLabel, 0, 2)
+        self.addItemGrid.addWidget(self.packingLineEdit, 0, 3)
+        self.addItemGrid.addWidget(self.weightLabel, 0, 4)
+        self.addItemGrid.addWidget(self.weightLineEdit, 0, 5)
+        self.addItemGrid.addWidget(self.packagesLabel, 1, 2)
+        self.addItemGrid.addWidget(self.packagesLineEdit, 1, 3)
+        self.addItemGrid.addWidget(self.addItemPushBut, 1, 5)
+
         self.qvLayout.addLayout(self.gridLayout)
         self.qvLayout.addLayout(self.addItemGrid)
         self.qvLayout.addWidget(self.itemsTable)
 
-
         self.setLayout(self.qvLayout)
         QMetaObject.connectSlotsByName(self)
-    
+
     def addItemclicked(self):
         a = self.itemDescriptionLineEdit.text()
         b = self.packingLineEdit.text()
         c = self.packagesLineEdit.text()
         d = self.weightLineEdit.text()
-        self.itemsTable.appendRow([a,b,c,d])
+        self.itemsTable.appendRow([a, b, c, d])
         self.itemDescriptionLineEdit.clear()
         self.packagesLineEdit.clear()
         self.packingLineEdit.clear()
         self.weightLineEdit.clear()
-    
-
