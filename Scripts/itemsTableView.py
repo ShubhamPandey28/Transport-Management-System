@@ -18,9 +18,6 @@ class itemsTableView(QTableWidget):
         self.headings = headings
         self.setHorizontalHeaderLabels(self.headings)
 
-        for i in range(len(headings)):
-            self.horizontalHeader().setSectionResizeMode(i, QHeaderView.Stretch)
-
         self.resizeColumnsToContents()
         self.resizeRowsToContents()
 
@@ -30,6 +27,11 @@ class itemsTableView(QTableWidget):
         data = [QTableWidgetItem(x) for x in rowData]
         for i in range(len(self.headings)):
             self.setItem(self.rowNumber, i, data[i])
+
+    def setToStretch():
+
+        for i in range(len(self.headings)):
+            self.horizontalHeader().setSectionResizeMode(i, QHeaderView.Stretch)
 
 
 def main(args):
