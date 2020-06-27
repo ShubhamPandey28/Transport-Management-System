@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import *
 from .RepairTab import RepairForm
 from .AddConsignmentTab import AddConsignmentForm
 from .AddConsignor import AddConsignorDlg
+from .AddVehicle import AddVehicleform
 from .BillGenerateTab import BillForm
 from .ViewTable import debugView
 
@@ -31,14 +32,24 @@ class MainWindow(QMainWindow):
         self.menuMenu.addAction(self.actionAddConsignee)
         self.actionAddConsignee.triggered.connect(lambda: self.openAddConsignorWindow())
 
+        self.actionAddVehicle = QAction("Add Vehicle", self)
+        self.menuMenu.addAction(self.actionAddVehicle)
+        self.actionAddVehicle.triggered.connect(lambda: self.openAddVehicleWindow())
+
+        self.menubar.addAction(self.menuMenu.menuAction())
+
         # Creating Debug Menu Options
         self.actionViewConsignments = QAction("View Consignments", self)
         self.debugMenu.addAction(self.actionViewConsignments)
-        self.actionViewConsignments.triggered.connect(lambda: self.viewTable("Consignment"))
+        self.actionViewConsignments.triggered.connect(
+            lambda: self.viewTable("Consignment")
+        )
 
         self.actionViewClients = QAction("View Cliets", self)
         self.debugMenu.addAction(self.actionViewClients)
-        self.actionViewClients.triggered.connect(lambda: self.viewTable("Consignor_Consignee"))
+        self.actionViewClients.triggered.connect(
+            lambda: self.viewTable("Consignor_Consignee")
+        )
 
         self.actionViewVehicles = QAction("View Vehicles", self)
         self.debugMenu.addAction(self.actionViewVehicles)
@@ -51,9 +62,7 @@ class MainWindow(QMainWindow):
         self.actionViewBills = QAction("View Bills", self)
         self.debugMenu.addAction(self.actionViewBills)
         self.actionViewBills.triggered.connect(lambda: self.viewTable("Bills"))
-        
 
-        self.menubar.addAction(self.menuMenu.menuAction())
         self.menubar.addAction(self.debugMenu.menuAction())
 
         # Set-Up Central Widget
@@ -106,6 +115,10 @@ class MainWindow(QMainWindow):
 
     def openAddConsignorWindow(self):
         self.ui = AddConsignorDlg()
+        self.ui.show()
+
+    def openAddVehicleWindow(self):
+        self.ui = AddVehicleform()
         self.ui.show()
 
     def viewTable(self, table_name):

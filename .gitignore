@@ -6,3 +6,4 @@ Pipfile
 Pipfile.lock
 test.py
 Scripts/__pycache__/*
+
