@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
+from .server import string_arg, insert
+
 
 class AddConsignorDlg(QDialog):
     def __init__(self):
@@ -146,19 +148,19 @@ class AddConsignorDlg(QDialog):
     def saveClicked(self):
         data = {}
 
-        data["Name"] = self.companyNameLineEdit.text()
+        data["Name"] = string_arg(self.companyNameLineEdit.text())
         data["Contact"] = self.mobNoLineEdit.text()
-        data["Address"] = (
+        data["Address"] = string_arg(
             self.addressLineEdit.text()
             + ", "
             + self.cityComboBox.currentText()
             + " - "
             + self.pinCodeLineEdit.text()
         )
-        data["Email"] = self.emailLineEdit.text()
-        data["GST_Number"] = self.gstLineEdit.text()
+        data["Email"] = string_arg(self.emailLineEdit.text())
+        data["GST_Number"] = string_arg(self.gstLineEdit.text())
 
-        print(data)
+        res = insert("Consignor_Consignee", data)
 
         self.accept()
 
