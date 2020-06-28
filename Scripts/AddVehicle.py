@@ -2,6 +2,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from .server import insert, string_arg
 
 class AddVehicleform(QDialog):
     def __init__(self):
@@ -22,6 +23,7 @@ class AddVehicleform(QDialog):
         self.vehicleNumLineEdit = QLineEdit()
         self.vehicleNumLineEdit.setPlaceholderText("Example: MH12DE1433")
         self.vehicleNumLabel.setBuddy(self.vehicleNumLineEdit)
+        self.vehicleNumLineEdit.setMaxLength(10)
         self.vehicleNumLineEdit.textChanged.connect(self.checkVehicleNo)
 
         self.vehicleModelLabel = QLabel("&Vehicle model: ", self)
@@ -74,6 +76,13 @@ class AddVehicleform(QDialog):
 
     def saveClicked(self):
         self.accept()
+
+        data = {}
+        data['ID'] = string_arg(self.vehicleNumLineEdit.text())
+        data['Model'] = string_arg(self.vehicleModelLineEdit.text())
+
+        insert("Vehicle", data)
+
         print("YES")
 
 
