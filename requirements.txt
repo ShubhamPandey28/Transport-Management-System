@@ -1,1 +1,4 @@
+requests
+reportlab
 PyQt5==5.14.2
+PyPDF2
